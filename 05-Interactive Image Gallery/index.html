@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Image Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      background: #f2f5f9;
+      color: #222;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 1000px;
+      margin: 28px auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 18px #0003;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #000e;
+    }
+
+    .lightbox img {
+      max-width: 85%;
+      max-height: 80vh;
+      border-radius: 8px;
+    }
+
+    .lightbox button {
+      position: absolute;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 5px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .previous {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    .autoplay {
+      bottom: 20px;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .gallery img {
+        height: 170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Gallery</h1>
+  <p>Click any image to view the slideshow.</p>
+
+  <div class="gallery" id="gallery">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Mountain landscape">
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Lake and mountains">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="Mountain lake">
+    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80" alt="Deer in a forest">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Sunlight in a forest">
+    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=700&q=80" alt="Ocean waves">
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-label="Image slideshow">
+    <button class="close" id="closeButton" aria-label="Close slideshow">Close</button>
+    <button class="previous" id="previousButton" aria-label="Previous image">Previous</button>
+    <img id="slideImage" src="" alt="">
+    <button class="next" id="nextButton" aria-label="Next image">Next</button>
+    <button class="autoplay" id="autoplayButton">Start autoplay</button>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll("#gallery img");
+    const lightbox = document.getElementById("lightbox");
+    const slideImage = document.getElementById("slideImage");
+    const autoplayButton = document.getElementById("autoplayButton");
+    let currentImage = 0;
+    let timer;
+
+    function showImage(index) {
+      currentImage = (index + images.length) % images.length;
+      slideImage.src = images[currentImage].src;
+      slideImage.alt = images[currentImage].alt;
+    }
+
+    function stopAutoplay() {
+      clearInterval(timer);
+      timer = null;
+      autoplayButton.textContent = "Start autoplay";
+    }
+
+    images.forEach((image, index) => {
+      image.addEventListener("click", () => {
+        showImage(index);
+        lightbox.style.display = "flex";
+      });
+    });
+
+    document.getElementById("nextButton").addEventListener("click", () => {
+      showImage(currentImage + 1);
+    });
+
+    document.getElementById("previousButton").addEventListener("click", () => {
+      showImage(currentImage - 1);
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+      lightbox.style.display = "none";
+      stopAutoplay();
+    });
+
+    autoplayButton.addEventListener("click", () => {
+      if (timer) {
+        stopAutoplay();
+      } else {
+        timer = setInterval(() => showImage(currentImage + 1), 2000);
+        autoplayButton.textContent = "Stop autoplay";
+      }
+    });
+  </script>
+</body>
+</html>

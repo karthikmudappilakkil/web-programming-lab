@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 9 - Form Validation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Registration and Login</h1>
+    <div class="forms">
+      <section class="form-card">
+        <h2>Registration</h2>
+        <form id="registrationForm" novalidate>
+          <label for="name">Name</label>
+          <input type="text" id="name">
+
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail">
+
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword">
+
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword">
+
+          <button type="submit">Register</button>
+          <p id="registrationMessage" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="form-card">
+        <h2>Login</h2>
+        <form id="loginForm" novalidate>
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail">
+
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword">
+
+          <button type="submit">Login</button>
+          <p id="loginMessage" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

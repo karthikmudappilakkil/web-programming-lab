@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: #f2f5f9;
+  color: #233044;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 24px;
+  background: white;
+  border: 1px solid #dce2ea;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aeb9c8;
+  border-radius: 5px;
+  font: inherit;
+}
+
+button {
+  margin: 12px 8px 12px 0;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 5px;
+  background: #245c9c;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.record {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #dce2ea;
+  border-radius: 6px;
+}
+
+.record h3 {
+  margin-top: 0;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.delete-button {
+  background: #a33b3b;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 11 - Weather Information</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Weather Information</h1>
+    <p>Enter a city to see its current weather.</p>
+    <form id="weatherForm">
+      <label for="cityInput">City name</label>
+      <div class="search-row">
+        <input type="text" id="cityInput" placeholder="For example, London" required>
+        <button type="submit">Get Weather</button>
+      </div>
+    </form>
+    <p id="message" aria-live="polite"></p>
+    <section id="weatherResult" class="weather-card" aria-live="polite"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

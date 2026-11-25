@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 17 - Employee Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Employee Management</h1>
+
+    {% if edit_employee %}
+      <h2>Update Employee</h2>
+      <form method="post" action="{{ url_for('edit', employee_id=edit_employee[0]) }}">
+        <label for="name">Name</label>
+        <input id="name" name="name" value="{{ edit_employee[1] }}" maxlength="100" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" value="{{ edit_employee[2] }}" maxlength="200" required>
+        <label for="department">Department</label>
+        <input id="department" name="department" value="{{ edit_employee[3] }}" maxlength="100" required>
+        <label for="salary">Salary</label>
+        <input id="salary" name="salary" type="number" min="0" step="0.01" value="{{ edit_employee[4] }}" required>
+        <button type="submit">Save Changes</button>
+        <a href="{{ url_for('home') }}">Cancel</a>
+      </form>
+    {% else %}
+      <h2>Add Employee</h2>
+      <form method="post" action="{{ url_for('home') }}">
+        <label for="name">Name</label>
+        <input id="name" name="name" maxlength="100" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" maxlength="200" required>
+        <label for="department">Department</label>
+        <input id="department" name="department" maxlength="100" required>
+        <label for="salary">Salary</label>
+        <input id="salary" name="salary" type="number" min="0" step="0.01" required>
+        <button type="submit">Add Employee</button>
+      </form>
+    {% endif %}
+
+    {% if message %}<p class="message" role="status">{{ message }}</p>{% endif %}
+
+    <h2>Search Employees</h2>
+    <form class="search-form" method="get" action="{{ url_for('home') }}">
+      <label for="search">Search by name or employee ID</label>
+      <input id="search" name="search" value="{{ search_text }}" placeholder="Name or ID">
+      <button type="submit">Search</button>
+      <a href="{{ url_for('home') }}">Show All</a>
+    </form>
+
+    <h2>Employees</h2>
+    {% if employees %}
+      {% for employee in employees %}
+        <article class="employee">
+          <h3>{{ employee[1] }} (ID: {{ employee[0] }})</h3>
+          <p>Email: {{ employee[2] }}</p>
+          <p>Department: {{ employee[3] }}</p>
+          <p>Salary: {{ "%.2f"|format(employee[4]) }}</p>
+          <a href="{{ url_for('edit', employee_id=employee[0]) }}">Edit</a>
+          <form class="inline-form" method="post" action="{{ url_for('delete', employee_id=employee[0]) }}">
+            <button class="delete-button" type="submit">Delete</button>
+          </form>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No employees found.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

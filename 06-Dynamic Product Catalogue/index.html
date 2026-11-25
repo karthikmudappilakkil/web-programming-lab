@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 6 - Dynamic Product Catalogue</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Dynamic Product Catalogue</h1>
+    <p>Search products by name or choose a category.</p>
+
+    <div class="filters">
+      <label for="searchInput">Search products</label>
+      <input type="search" id="searchInput" placeholder="Enter a product name">
+
+      <label for="categorySelect">Category</label>
+      <select id="categorySelect">
+        <option value="All">All categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Books">Books</option>
+        <option value="Stationery">Stationery</option>
+        <option value="Clothing">Clothing</option>
+      </select>
+    </div>
+
+    <p id="message" aria-live="polite"></p>
+    <div id="productList" class="product-list"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

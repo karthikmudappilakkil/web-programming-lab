@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Welcome, {{ name }}!</h1>
+    <p>You are logged in. Your login state is stored in a Flask session.</p>
+    <form action="{{ url_for('logout') }}" method="post">
+      <button type="submit">Log Out</button>
+    </form>
+  </main>
+</body>
+</html>

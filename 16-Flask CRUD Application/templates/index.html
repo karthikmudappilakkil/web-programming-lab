@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 16 - Records CRUD</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Record Manager</h1>
+    {% if edit_record %}
+      <h2>Update Record</h2>
+      <form method="post" action="{{ url_for('edit', record_id=edit_record[0]) }}">
+        <label for="title">Title</label>
+        <input id="title" name="title" value="{{ edit_record[1] }}" maxlength="100" required>
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3" maxlength="1000" required>{{ edit_record[2] }}</textarea>
+        <button type="submit">Save Changes</button>
+        <a href="{{ url_for('home') }}">Cancel</a>
+      </form>
+    {% else %}
+      <h2>Add Record</h2>
+      <form method="post" action="{{ url_for('home') }}">
+        <label for="title">Title</label>
+        <input id="title" name="title" maxlength="100" required>
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3" maxlength="1000" required></textarea>
+        <button type="submit">Add Record</button>
+      </form>
+    {% endif %}
+
+    <h2>Saved Records</h2>
+    {% if records %}
+      {% for record in records %}
+        <article class="record">
+          <h3>{{ record[1] }}</h3>
+          <p>{{ record[2] }}</p>
+          <a href="{{ url_for('edit', record_id=record[0]) }}">Edit</a>
+          <form class="inline-form" method="post" action="{{ url_for('delete', record_id=record[0]) }}">
+            <button class="delete-button" type="submit">Delete</button>
+          </form>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No records yet.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

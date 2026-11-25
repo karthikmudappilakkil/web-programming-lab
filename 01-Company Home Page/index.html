@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrightPath Solutions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #263238;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 8%;
+      background: #fff;
+    }
+
+    .logo {
+      color: #176b87;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #263238;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #176b87;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 8%;
+      background: #eaf6f8;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero h1 {
+      margin-bottom: 16px;
+      color: #104b63;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 500px;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 5px;
+      background: #176b87;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero img {
+      width: 48%;
+      max-width: 520px;
+      height: 300px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .services {
+      padding: 55px 8%;
+      text-align: center;
+    }
+
+    .services h2 {
+      margin-bottom: 8px;
+      color: #104b63;
+      font-size: 2rem;
+    }
+
+    .services-intro {
+      margin-bottom: 30px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      text-align: left;
+    }
+
+    .service-card {
+      padding: 24px;
+      border: 1px solid #dce6e9;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .service-card h3 {
+      margin-bottom: 8px;
+      color: #176b87;
+    }
+
+    footer {
+      padding: 25px 8%;
+      background: #104b63;
+      color: #fff;
+      text-align: center;
+    }
+
+    footer a {
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px 20px;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 42px 6%;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 230px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">BrightPath</a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Ideas that move your business forward.</h1>
+        <p>BrightPath Solutions helps businesses grow with thoughtful strategy, creative design, and reliable technology.</p>
+        <a class="button" href="#services">Explore our services</a>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+        alt="A bright, modern office workspace"
+      >
+    </section>
+
+    <section class="services" id="services">
+      <h2>Our Services</h2>
+      <p class="services-intro">Simple solutions to help your company succeed.</p>
+      <div class="service-grid">
+        <article class="service-card">
+          <h3>Web Design</h3>
+          <p>We create attractive, easy-to-use websites for your business.</p>
+        </article>
+        <article class="service-card">
+          <h3>Digital Marketing</h3>
+          <p>We help you reach more customers and build your online presence.</p>
+        </article>
+        <article class="service-card">
+          <h3>Business Consulting</h3>
+          <p>We provide practical guidance to support your next stage of growth.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2>Get in touch</h2>
+    <p>Email: <a href="mailto:hello@brightpath.example">hello@brightpath.example</a></p>
+    <p>Phone: <a href="tel:+15550102020">+1 555 010 2020</a></p>
+    <p>&copy; 2026 BrightPath Solutions</p>
+  </footer>
+</body>
+</html>

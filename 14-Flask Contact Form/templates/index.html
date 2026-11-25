@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 14 - Contact Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Contact Form</h1>
+    <p>Enter your details and message.</p>
+    <form method="post">
+      <label for="name">Name</label>
+      <input id="name" name="name" maxlength="100" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" maxlength="200" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" maxlength="2000" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    {% if message %}
+      <p class="message {{ message_type }}" role="status">{{ message }}</p>
+    {% endif %}
+  </main>
+</body>
+</html>
